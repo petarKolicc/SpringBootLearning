@@ -48,21 +48,61 @@ mvnw clean compile test
 
 Ako imam odgovarajucu verziju mavena mogu se obrisati ova dva fajla
 
+### application.properties
 
 
 // prazan na pocetku dodaju se pojedinosti npr na kom portu da slusa i ovo je lokalna stvar kao .env u nodu
 resources/application.properties
 a.b=miki maus
 
+
+```
+// od sad ide localhost:8080/moja-ruta/endpoint1
+server.servlet.context-path=/moja-ruta
+```
+
+
 ```
 // application.properties
 a.b=miki maus
 
 .java
+
+import org.springframework.beans.factory.annotation.Value;
+
 // citamo vrednost a.b sto je miki maus
 @Value("${a.b}")
 private String teamName;
 // injekcija
+
+```
+
+#### Logovanje
+```
+// application.properties
+
+logging.level.org.springframework=DEBUG
+logging.level.org.hibernate=TRACE
+logging.level.com.lub2code=INFO
+
+logging.file.name=my-crazy-stuff.log
+logging.file.path=c:/myapps/demo
+
+```
+
+
+```
+// menjanje porta
+server.port=8080
+
+// lokacija aplikacije
+server.servlet.context-path=/my-silly-app
+
+// 
+server.servlet.session.timeout=15m
+// tajmaout sesije
+
+
 ```
 
 
@@ -104,3 +144,81 @@ Spring Boot Starter Parent - pocetak default koja java, koji maven...
 InteliJ -> Preferences -> Compiler -> Build project automatically
 Intelij -> Preferences -> Advanced Settings -> Allow auto-make to start even if developer application is currently running
 ```
+
+
+### Spring Boot Actuator
+```
+Spring Boot Actuator
+
+// pom xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+
+// application.properties
+
+// ako hocemo samo nesto da expose
+managment.endpoints.web.exposure.include=health,info
+// ako necemo
+management.endpoints.web.exposure.exclude=info
+
+// informacije za info
+// en
+managment.info.env.enabled=true
+
+// ako hocemo sve da exposujemo
+management.endpoints.web.exposure.include=*  
+management.info.env.enabled=true  
+
+// Info mora biti popunjen
+info.app.name=My Super Cool App
+info.app.description=A crazy and fun app, yoohoo!
+info.app.version=1.0.0
+
+managment.endpoints.web.base-path=/actuator
+// ime patha za health, info prefix
+
+```
+
+```
+
+http://localhost:8080/actuator/health
+pokazuje health 
+```
+![[Pasted image 20240118154449.png]]
+
+
+#### Security
+
+```
+pom.xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-security</artifactId>
+<dependency>
+
+// resources/application.properties
+
+// postavljanje user i pass
+spring.security.user.name=petar
+spring.security.password=petar
+
+
+```
+
+
+
+### Terminal
+
+java -jar mycoolapp.jar
+// pokretanje aplikacije i dizanje na embedovan server(Tomcat)
+
+
+
+
+
+#
+Spring container
+	- Pravi i upravlja objektima (Inversion of Control)
+	- Inject object's dependencies (Dependency Injection)

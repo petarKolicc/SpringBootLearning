@@ -13,7 +13,7 @@
 
 ### Spring
 ```
-
+f
 // spring
 <groupId>com.luv2code.springboot.demo</groupId>  
 <artifactId>mycoolapi</artifactId>  
@@ -34,6 +34,10 @@ idi na sajt spring.io, hibernate.org
 http://search.maven.org 
 
 
+https://mvnrepository.com/repos/central
+// ovde su svi paketi
+
+
 // kolekcija dependecija
 ```
 		<dependency>
@@ -46,7 +50,20 @@ http://search.maven.org
 ###package
 
 // pokretanje pakovanje i runovanje
-./mvnw package
-./mvnw spring-boot:run
+./mvnw package && ./mvnw spring-boot:run
+// ili samo mvn
 
 
+
+mvn clean install -U
+// mvn clean brise sve
+// mvn install sve ponovo instalira i pakuje
+// mvn install -U - ide na maven central repository i proverava ponovo jel sve tu
+
+
+
+Preko mavena
+
+// za pokretanje
+// moze i samo "mvn" ako je vec instaliran
+mvnw clean compile test

@@ -1,5 +1,6 @@
 package com.luv2code.springboot.demo.mycoolapi.rest;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,9 +12,15 @@ public class FunRestController {
 		return "Hello World";
 	}
 
-	@GetMapping("/test")
-	public String sayHello2(){
-		return "Hello World2";
+	@Value("${trener.ime}")
+	private String coachName;
+
+	@GetMapping("/test5")
+	public String sayHello5(){
+		return coachName;
 	}
+
+
+
 
 }

@@ -20,6 +20,28 @@
             }
           },
           {
+            "id": "f562c0df5bfa7405",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.3"
+              }
+            }
+          },
+          {
+            "id": "5bb6311608cb7ece",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dependency injection.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "1e4bb10342d41e9a",
             "type": "leaf",
             "state": {
@@ -31,7 +53,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -97,7 +120,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Opste.md",
+                "file": "Dependency injection.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +137,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Opste.md",
+                "file": "Dependency injection.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Opste.md"
+                "file": "Dependency injection.md"
               }
             }
           }
@@ -158,10 +181,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bedfff2f06670cb2",
+  "active": "5bb6311608cb7ece",
   "lastOpenFiles": [
-    "Maven.md",
     "Opste.md",
+    "Dependency injection.md",
+    "slike/Pasted image 20240119130257.png",
+    "Maven.md",
+    "slike/Pasted image 20240118154449.png",
+    "slike/Pasted image 20240118154448.png",
     "slike/Pasted image 20240115162147.png",
     "slike",
     "slike/Pasted image 20240115153720.png"
