@@ -48,7 +48,7 @@ mvnw clean compile test
 
 Ako imam odgovarajucu verziju mavena mogu se obrisati ova dva fajla
 
-### application.properties
+# application.properties
 
 
 // prazan na pocetku dodaju se pojedinosti npr na kom portu da slusa i ovo je lokalna stvar kao .env u nodu
@@ -77,7 +77,7 @@ private String teamName;
 
 ```
 
-#### Logovanje
+# Logovanje
 ```
 // application.properties
 
@@ -132,7 +132,7 @@ Spring Boot Starter Parent - pocetak default koja java, koji maven...
 
 
 
-### Spring Boot Dev Tools
+# Spring Boot Dev Tools
 // automatski azurira sve posto se izmeni src code i restart 
 
 ```
@@ -146,7 +146,7 @@ Intelij -> Preferences -> Advanced Settings -> Allow auto-make to start even if 
 ```
 
 
-### Spring Boot Actuator
+# Spring Boot Actuator
 ```
 Spring Boot Actuator
 
@@ -189,7 +189,7 @@ pokazuje health
 ![[Pasted image 20240118154449.png]]
 
 
-#### Security
+# Security
 
 ```
 pom.xml
@@ -209,16 +209,223 @@ spring.security.password=petar
 
 
 
-### Terminal
+# Terminal
 
 java -jar mycoolapp.jar
 // pokretanje aplikacije i dizanje na embedovan server(Tomcat)
 
 
+# Bean
+
+Spring container - default pravi singleton, sve dependency injection
+ce biti deo istog bean
+
+Postoje i drugi scopovi
 
 
 
-#
+## Zivotni vek
+
+![[Pasted image 20240121133541.png]]
+
+
+```
+@Component("TennisCoach")  
+//ovde explicitno navodimo kog ce biti <mark>tipa</mark>
+@Scope(ConfigurableBeanFacory.SCOPE_SINGLETON)
+public class TennisCoach implements  Coach {  
+  
+    @Override  
+    public String getDailyWorkout()  
+    {  
+        return "Practice fast bowling for 15minutes";  
+    }
+
+	 // anotacija posto se napravi
+	 @PostConstruct
+	 public void doMyStartupStuff()
+	 {
+		 // ovde deo koji ce se izvrsiti posto se napravi bean
+	 }
+
+	 // pri unistavanju, ne funkcionise za prototype anotaciju
+	 @PreDestroy
+	 public void doMyCleanupStuff() {
+		 
+	 }
+}
+```
+
+## Prototype
+- novi objekat za svaku injekciju
+@Scope(ConfigurableBeanFacory.SCOPE_PROTOTYPE)
+
+
+
+## 
+
+```
+  
+@Component("TennisCoach")  
+//ovde explicitno navodimo kog ce biti <mark>tipa</mark>
+@Scope(ConfigurableBeanFacory.SCOPE_SINGLETON)
+public class TennisCoach implements  Coach {  
+  
+    @Override  
+    public String getDailyWorkout()  
+    {  
+        return "Practice fast bowling for 15minutes";  
+    }  
+}
+```
+
+
+
+# Inversion of Control Spring Bean
 Spring container
 	- Pravi i upravlja objektima (Inversion of Control)
 	- Inject object's dependencies (Dependency Injection)
+Objekat definise svoje dependencije bez da ih pravi. Ovaj posao je delegiran IoC kontejneru.
+
+Cilj je da IoC kontejner pravi i odrzava sistem dependency klasa hoce li one biti deljene ili ne i sta treba
+
+stavlja se anotacija
+
+@Component - za dependency klasu
+
+
+
+# Anotacije
+
+@SpringBootApplication - sastoji od sledecih anotacija
+@EnableAutoConfiguration - podrska za auto konfiguraciju
+@ComponentScan - Dozvoljava component scanning trenutnog paketa i rekurzivno 
+skenira sub pakete
+@Configuration - registruje dodatne benova sa @Bean ili da importuje druge konfiguracione klase
+
+Iza scene pravi kontext aplikacije registruje binove i pocinje embedovan server
+
+
+# Skeniranje 
+
+Po defaultu pocinje skeniranje od paketa kom pripada Spring Boot aplikacija potom skenira pod pakete rekurzivno
+
+Spring boot nece gledati pakete van core paketa(i njegovih podpaketa)
+Moze mu se ekplicitno reci sta da skenira
+
+
+```
+@SpringBootApplication(
+	scanBasePackages = ("skeniraj.ovaj.paket.iako.je.van.defaultnog", "skeniraj.ovaj.paket.iako.je.van.defaultnog2")
+)
+public class SpringcoredemoApplication...
+```
+
+
+
+# Lazy Initialization
+
+
+Prednosti, pravi objekte samo kad su potrebni i brze vreme starta
+Mane - ako imas @RestController, ne prave se dok ih neko ne zatrazi
+
+Na nivou komponente
+```
+@Lazy  
+@Component("TennisCoach")  
+public class TennisCoach implements  Coach {  
+  
+    @Override  
+    public String getDailyWorkout()  
+    {  
+        return "Practice fast bowling for 15minutes";  
+    }  
+}
+
+```
+
+na globalnom nivou, svi binovi su lazy ukljucujuci i kontrolere
+dok ne trebaju se ne ucitavaju
+```
+//application.properties
+
+spring.main.lazy-initialization=true
+```
+
+
+
+# Third party integracija bean
+
+
+Imas third party code koji ne mozes da modifikujes
+Proglasis ga za @Bean(Metod klase) - postaje SpringBean i koristimo ga u drugim delovima aplikacije
+
+Cilj je injectovanje unutar nase spring aplikacije
+
+U slucaju da nema @Component
+
+
+
+```
+// config.SportConfig.java
+
+package com.example.drugiProjekat.drugiprojekat.config;  
+  
+import com.example.drugiProjekat.drugiprojekat.Coach;  
+import com.example.drugiProjekat.drugiprojekat.SwimCoach;  
+import org.springframework.context.annotation.Bean;  
+import org.springframework.context.annotation.Configuration;  
+@Configuration  
+public class SportConfig {  
+    @Bean  
+    // bean id= ime metode swimCoach - isto kao @Component("swimCoach")  
+    // ako hocemo drugo stavili bismo @Bean("imeBeana") - sad je ovo
+    public Coach swimCoach() {  
+        return new SwimCoach();  
+    }  
+}
+
+
+
+
+
+
+
+
+// SwimCoach.java
+
+package com.example.drugiProjekat.drugiprojekat;  
+  
+import org.springframework.stereotype.Component;  
+  
+// namerno nema @Component  
+public class SwimCoach implements  Coach {  
+  
+    @Override  
+    public String getDailyWorkout()  
+    {  
+        return "Practice fast bowling for 15minutes";  
+    }  
+}
+
+
+
+// DemoController.java
+
+
+@RestController  
+public class DemoController  
+{  
+    private Coach myCoach;  
+  
+    // govori springu da injectuje dependency  
+    // inace je opciono kada imamo samo 1 konstruktor    @Autowired  
+	// id je ovde ime metode
+    public DemoController(@Qualifier("swimCoach") Coach theCoach)  
+    {  
+        myCoach = theCoach;  
+    }
+
+
+```
+

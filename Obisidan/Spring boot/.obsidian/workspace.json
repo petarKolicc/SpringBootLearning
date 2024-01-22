@@ -8,24 +8,14 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bedfff2f06670cb2",
+            "id": "505d0649fc5213cd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Opste.md",
+                "file": "Hibernate, JPA, ORM.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "f562c0df5bfa7405",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.5.3"
               }
             }
           },
@@ -40,21 +30,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "1e4bb10342d41e9a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Maven.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -83,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "@Conf",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -100,7 +77,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -120,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Dependency injection.md",
+                "file": "Hibernate, JPA, ORM.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Dependency injection.md",
+                "file": "Hibernate, JPA, ORM.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dependency injection.md"
+                "file": "Hibernate, JPA, ORM.md"
               }
             }
           }
@@ -169,7 +147,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -181,16 +160,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5bb6311608cb7ece",
+  "active": "505d0649fc5213cd",
   "lastOpenFiles": [
     "Opste.md",
+    "Hibernate, JPA, ORM.md",
+    "Maven.md",
+    "slike/Pasted image 20240121201152.png",
+    "slike/Pasted image 20240121200348.png",
+    "slike/Pasted image 20240121183729.png",
+    "slike/Pasted image 20240121183644.png",
+    "slike/Pasted image 20240121183422.png",
+    "slike/Pasted image 20240121183015.png",
+    "slike/Pasted image 20240121155229.png",
+    "slike/Pasted image 20240121154550.png",
+    "slike/Pasted image 20240121133541.png",
     "Dependency injection.md",
     "slike/Pasted image 20240119130257.png",
-    "Maven.md",
-    "slike/Pasted image 20240118154449.png",
-    "slike/Pasted image 20240118154448.png",
-    "slike/Pasted image 20240115162147.png",
-    "slike",
-    "slike/Pasted image 20240115153720.png"
+    "slike"
   ]
 }
