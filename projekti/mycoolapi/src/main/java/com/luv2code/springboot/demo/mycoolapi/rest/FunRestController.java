@@ -20,6 +20,17 @@ public class FunRestController {
 		return coachName;
 	}
 
+	@GetMapping("/test7")
+	public String sayHello7(){
+		return coachName;
+	}
+
+
+	@GetMapping("/test8")
+	public String sayHello8(){
+		return coachName;
+	}
+
 
 	@GetMapping("/test6")
 	public String sayHello6(){

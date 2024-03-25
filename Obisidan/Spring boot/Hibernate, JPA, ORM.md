@@ -10,7 +10,7 @@ Mapiranje
 
 JPA - Jakarta Persistence API, ovo je samo interfejs a neko od mogucih implementacija su Hibernate, EclipseLink, lako moze da se menja implementacija preko konfiguracije ovde
 
-
+JPA - je flexibilniji jer imas samo JPA sloj nad bazom jer kodiras nas API pozivom
 
 Hibernate je defaultna implementacija JPA
 
@@ -18,12 +18,46 @@ Na osnovu konfiguracije Spring Boot automatski pravi binove:
 DataSource, EntityManager, ...
 
 
+Dependency
+
+MySQLDriver
+Spring
+
+```
+// pom.xml
+
+<dependency>  
+   <groupId>com.mysql</groupId>  
+   <artifactId>mysql-connector-j</artifactId>  
+</dependency>  
+<dependency>  
+   <groupId>org.springframework.boot</groupId>  
+   <artifactId>spring-boot-starter-data-jpa</artifactId>  
+</dependency>
+```
+
+```
+// glavni deo aplikacije gde postoji main klasa i odakle
+// se sve pokrece
+
+    @Bean  
+    // kod koji se izvrsava posto su svi Spring Beanovi ucitani  
+    public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {  
+  
+        // ovo je lamba funkcija sto je ekvivalent arrow funkcija  
+        // u js, radi pocevsi od java 8        return runner -> {  
+//            createStudent(studentDAO);  
+              createMultipleStudents(studentDAO);  
+        };  
+    }
+```
 
 # Entity
-
+ 
 Entity class mora biti anotirana sa @Entity
 
 Mora imati public ili protected bez argumenata konstruktor, sme da ima druge konstruktore
+Moramo napraviti 
 
 
 # Mapiranje klase ka tabeli u bazi
@@ -38,9 +72,9 @@ Mora imati public ili protected bez argumenata konstruktor, sme da ima druge kon
 
 ![[Pasted image 20240121183015.png]]
 
-@Column - je opciono ali visoko preporucljiva anotacija
+@Column - je opciono ali visoko preporucljiva anotacija, inace je ime polja
 
-@Table - je opciono ali visoko preporucljiva anotacija
+@Table - je opciono ali visoko preporucljiva anotacija inace je ime klase
 
 
 # Primary Key Azuriranje
@@ -52,6 +86,22 @@ Razlicite strategije
 ![[Pasted image 20240121183729.png]]
 
 GenerationType.IDENTITY - auto inkrement
+GenerationType.AUTO
+GenerationType.SEQUENCE
+GenerationType.TABLE
+
+
+// konekcija ka bazi
+```
+// application.properties
+
+
+spring.datasource.url=jdbc:mysql://localhost:3306/student_tracker  
+spring.datasource.username=springstudent  
+spring.datasource.password=springstudent
+```
+
+
 
 
 // mapiranje tabele sa kolonama za klasu sa poljima
@@ -183,7 +233,8 @@ public class StudentDAOImpl implements StudentDAO {
 @Transactional - automatski zapocinje i zavrsava transakciju unutar JPA koda. Nema potrebe da to cinis explicitno
 
 
-@Repository - 
+@Repository - pod @Comoponenta
+// prevodi JDBC exceptione
 
 ![[Pasted image 20240121201152.png]]
 

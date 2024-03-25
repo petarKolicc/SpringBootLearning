@@ -19,6 +19,7 @@ public class Student {
     @Column(name="email")
     private String email;
 
+    // ovo je neophodno
     public Student() {
 
     }

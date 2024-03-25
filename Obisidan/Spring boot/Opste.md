@@ -5,6 +5,7 @@ skine i jarove ali i server
 
 java -jar mojjar.jar
 // pokretanje iz komande linije
+// opet za pakovanje mora i najlakse mvnw package
 
 git clone https://github.com/darbyluv2code/spring-boot-3-spring-6-hibernate-for-beginner
 // kloniranje projekta
@@ -145,6 +146,8 @@ InteliJ -> Preferences -> Compiler -> Build project automatically
 Intelij -> Preferences -> Advanced Settings -> Allow auto-make to start even if developer application is currently running
 ```
 
+mora i u podesavanjima
+File->Setting –> Build, Execution, Deployment –> Compiler–>Build project automatically is selected.
 
 # Spring Boot Actuator
 ```
@@ -211,9 +214,12 @@ spring.security.password=petar
 
 # Terminal
 
-java -jar mycoolapp.jar
+java -jar mycoolapp.jar  === ./mvnw spring-boot:run
 // pokretanje aplikacije i dizanje na embedovan server(Tomcat)
 
+```
+./mvnw pakcage && ./mvnw spring-boot:run
+```
 
 # Bean
 
@@ -224,9 +230,28 @@ Postoje i drugi scopovi
 
 
 
-## Zivotni vek
+## Zivotni vek Bean Scope
 
 ![[Pasted image 20240121133541.png]]
+
+
+Default singleton - samo se jedan objekat pravi beana
+mozemo da explicitno da menjamo
+
+postoje
+
+singleton
+prototype
+request 
+session 
+global-session
+
+# @PostConstruct i @PreDestroy
+// logika
+
+@PostConstruct - posto se napravi bean
+
+@PreDestroy - pre nego se unisti beam
 
 
 ```
@@ -282,6 +307,10 @@ public class TennisCoach implements  Coach {
 
 
 # Inversion of Control Spring Bean
+
+
+![[Pasted image 20240324091931.png]]
+
 Spring container
 	- Pravi i upravlja objektima (Inversion of Control)
 	- Inject object's dependencies (Dependency Injection)
@@ -297,6 +326,8 @@ stavlja se anotacija
 
 # Anotacije
 
+## @Configuration
+
 @SpringBootApplication - sastoji od sledecih anotacija
 @EnableAutoConfiguration - podrska za auto konfiguraciju
 @ComponentScan - Dozvoljava component scanning trenutnog paketa i rekurzivno 
@@ -306,7 +337,7 @@ skenira sub pakete
 Iza scene pravi kontext aplikacije registruje binove i pocinje embedovan server
 
 
-# Skeniranje 
+# Skeniranje  Scann
 
 Po defaultu pocinje skeniranje od paketa kom pripada Spring Boot aplikacija potom skenira pod pakete rekurzivno
 
@@ -327,7 +358,7 @@ public class SpringcoredemoApplication...
 
 
 Prednosti, pravi objekte samo kad su potrebni i brze vreme starta
-Mane - ako imas @RestController, ne prave se dok ih neko ne zatrazi
+Mane - ako imas @RestController, ne prave se dok ih neko ne zatrazi inace se odmah prave
 
 Na nivou komponente
 ```
@@ -378,7 +409,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration  
 public class SportConfig {  
     @Bean  
-    // bean id= ime metode swimCoach - isto kao @Component("swimCoach")  
+    // bean id= ime metode swimCoach - isto kao, ako se daje id onda ne gleda ime metode vec ovaj id kada bude radio injectovanje @Component("swimCoach")  
     // ako hocemo drugo stavili bismo @Bean("imeBeana") - sad je ovo
     public Coach swimCoach() {  
         return new SwimCoach();  
@@ -429,3 +460,18 @@ public class DemoController
 
 ```
 
+
+
+# male cake  
+```
+// application.properties
+
+
+// gasenje spring boot bannera pri dizanju aplikacije
+spring.main.banner-mode=off
+
+// spustanje logger levela na minimum warning  
+logging.level.root=warn %%
+
+
+```

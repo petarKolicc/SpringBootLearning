@@ -1,52 +1,35 @@
 {
   "main": {
-    "id": "bd2e1ea95cebedec",
+    "id": "6bac276716de70de",
     "type": "split",
     "children": [
       {
-        "id": "20aaa12fe8a72df9",
+        "id": "27d40ded40629560",
         "type": "tabs",
         "children": [
           {
-            "id": "505d0649fc5213cd",
+            "id": "31d6cb31ebd15c94",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hibernate, JPA, ORM.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "781e4c4bf324c274",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Hibernate, JPA, ORM.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "058b99180ecf81cc",
+    "id": "2fdfac2b8d3e027a",
     "type": "split",
     "children": [
       {
-        "id": "595c94889780b307",
+        "id": "cf4dd9927ba1e626",
         "type": "tabs",
         "children": [
           {
-            "id": "5b1e18fa988c344c",
+            "id": "fdd0aa641536f25c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -56,12 +39,12 @@
             }
           },
           {
-            "id": "904674483f8be8fc",
+            "id": "c730629e7d8781d2",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "@Configuration",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -71,7 +54,7 @@
             }
           },
           {
-            "id": "65b10ddb55ae90f3",
+            "id": "dff4b61f1122e7d5",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -82,23 +65,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 300
   },
   "right": {
-    "id": "7795a8d0266e6b35",
+    "id": "b7273cb174cee3f3",
     "type": "split",
     "children": [
       {
-        "id": "0edf31b62a3077e9",
+        "id": "e9fa19ed1debfbe2",
         "type": "tabs",
         "children": [
           {
-            "id": "ff357585d160e50f",
+            "id": "9b42393b5c89ac56",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Hibernate, JPA, ORM.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,19 +92,18 @@
             }
           },
           {
-            "id": "fb3c2b18e168e8a2",
+            "id": "0065b9d88ff2150a",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Hibernate, JPA, ORM.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "50422919989aeb19",
+            "id": "a881de3f272ccd38",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -133,21 +114,18 @@
             }
           },
           {
-            "id": "2aa69c11736b78c6",
+            "id": "7f178b3f3b077408",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Hibernate, JPA, ORM.md"
-              }
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200,
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
@@ -160,25 +138,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5b1e18fa988c344c",
-  "lastOpenFiles": [
-    "slike/Pasted image 20240324185920.png",
-    "Dependency injection.md",
-    "Opste.md",
-    "Hibernate, JPA, ORM.md",
-    "MySQL.md",
-    "slike/Pasted image 20240324091931.png",
-    "Maven.md",
-    "Controller.md",
-    "slike/Pasted image 20240121201152.png",
-    "slike/Pasted image 20240121200348.png",
-    "slike/Pasted image 20240121183729.png",
-    "slike/Pasted image 20240121183644.png",
-    "slike/Pasted image 20240121183422.png",
-    "slike/Pasted image 20240121183015.png",
-    "slike/Pasted image 20240121155229.png",
-    "slike/Pasted image 20240121154550.png",
-    "slike/Pasted image 20240121133541.png",
-    "slike"
-  ]
+  "active": "31d6cb31ebd15c94",
+  "lastOpenFiles": []
 }
