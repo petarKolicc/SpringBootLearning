@@ -26,4 +26,9 @@ public class StudentDAOImpl implements StudentDAO {
         //cuvanje novog studenta u bazi
         entityManager.persist(theStudent);
     }
+
+    public Student findById(Integer id)
+    {
+        return entityManager.find(Student.class, id);
+    }
 }

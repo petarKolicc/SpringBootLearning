@@ -61,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "@Configuration",
+                "query": "primary",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,7 +78,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -160,12 +161,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5b1e18fa988c344c",
+  "active": "781e4c4bf324c274",
   "lastOpenFiles": [
-    "slike/Pasted image 20240324185920.png",
     "Dependency injection.md",
-    "Opste.md",
     "Hibernate, JPA, ORM.md",
+    "slike/Pasted image 20240324185920.png",
+    "Opste.md",
     "MySQL.md",
     "slike/Pasted image 20240324091931.png",
     "Maven.md",
@@ -178,7 +179,6 @@
     "slike/Pasted image 20240121183015.png",
     "slike/Pasted image 20240121155229.png",
     "slike/Pasted image 20240121154550.png",
-    "slike/Pasted image 20240121133541.png",
     "slike"
   ]
 }

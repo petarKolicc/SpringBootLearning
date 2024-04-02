@@ -221,6 +221,7 @@ public class StudentDAOImpl implements StudentDAO {
 
 	// implementacija save metode koja cuva nove polje u tabeli
 	@Override
+	// transactional operacija jer radimo cuvanje u bazi
 	@Transactional
 	public void save(Student theStudent) {
 		entityManager.persist(theStudent);
