@@ -2,8 +2,9 @@ package com.example.drugiProjekat.drugiprojekat.entity;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity(name="Student")
 @Table(name="student")
+
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

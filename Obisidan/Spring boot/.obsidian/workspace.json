@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hibernate, JPA, ORM.md",
+                "file": "Hibernate, JPA, ORM, JPQL.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,14 +25,72 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Hibernate, JPA, ORM.md",
+                "file": "Hibernate, JPA, ORM, JPQL.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "385ce81c3501758d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "HTTP REST API.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1d1810de1099085a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Hibernate, JPA, ORM, JPQL.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "d3a095f44b270e7b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "HTTP REST API.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "64dbb02e873f99fb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Opste.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "bb834fb17b905344",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.12"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -61,7 +119,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "primary",
+                "query": "install",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -78,12 +136,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 270.5
   },
   "right": {
     "id": "7795a8d0266e6b35",
@@ -99,7 +156,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Hibernate, JPA, ORM.md",
+                "file": "HTTP REST API.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +173,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Hibernate, JPA, ORM.md",
+                "file": "HTTP REST API.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +196,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Hibernate, JPA, ORM.md"
+                "file": "HTTP REST API.md"
               }
             }
           }
@@ -161,24 +218,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "781e4c4bf324c274",
+  "active": "d3a095f44b270e7b",
   "lastOpenFiles": [
-    "Dependency injection.md",
-    "Hibernate, JPA, ORM.md",
-    "slike/Pasted image 20240324185920.png",
-    "Opste.md",
-    "MySQL.md",
-    "slike/Pasted image 20240324091931.png",
+    "Spring Data JPA.md",
     "Maven.md",
+    "Opste.md",
+    "Hibernate, JPA, ORM, JPQL.md",
+    "slike/Pasted image 20240505161334.png",
+    "Jakson JSON data binding.md",
+    "HTTP REST API.md",
+    "slike/Pasted image 20240504204005.png",
+    "Exception handling.md",
+    "MySQL.md",
+    "Dependency injection.md",
+    "slike/Pasted image 20240503190016.png",
+    "slike/Pasted image 20240503143910.png",
+    "slike/Pasted image 20240503143757.png",
+    "slike/Pasted image 20240503143624.png",
+    "slike/Pasted image 20240324185920.png",
+    "slike/Pasted image 20240324091931.png",
     "Controller.md",
     "slike/Pasted image 20240121201152.png",
     "slike/Pasted image 20240121200348.png",
-    "slike/Pasted image 20240121183729.png",
-    "slike/Pasted image 20240121183644.png",
-    "slike/Pasted image 20240121183422.png",
-    "slike/Pasted image 20240121183015.png",
-    "slike/Pasted image 20240121155229.png",
-    "slike/Pasted image 20240121154550.png",
     "slike"
   ]
 }

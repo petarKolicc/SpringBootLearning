@@ -179,7 +179,7 @@ info.app.name=My Super Cool App
 info.app.description=A crazy and fun app, yoohoo!
 info.app.version=1.0.0
 
-managment.endpoints.web.base-path=/actuator
+management.endpoints.web.base-path=/actuator
 // ime patha za health, info prefix
 
 ```

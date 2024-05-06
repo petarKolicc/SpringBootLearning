@@ -129,6 +129,7 @@ public class Student {
     @Column(name="email")
     private String email;
 
+	// zahteva JPA
     public Student() {
 
     }
@@ -433,3 +434,275 @@ Student myStudent = entityManager.find(Student.class, 1);
 Query langugae for retrieving objects
 
 
+```
+    @Override
+    public List<Student> findByLastName(String theLastName)
+    {
+
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student WHERE lastName=:theData", Student.class);
+        theQuery.setParameter("theData", theLastName);
+
+        return theQuery.getResultList();
+    }
+```
+
+
+```
+int numRowsUpdated = entityManager.createQuery("UPDATE Student SET lastName='Tester'").executeUpdate();
+
+```
+
+
+
+
+#  SELECT, UPDATE, DELETE, CREATE
+
+
+
+```
+// CruddemoApplication.java
+
+
+package com.example.drugiProjekat.drugiprojekat;  
+  
+import com.example.drugiProjekat.drugiprojekat.dao.StudentDAO;  
+import com.example.drugiProjekat.drugiprojekat.dao.StudentDAOImpl;  
+import com.example.drugiProjekat.drugiprojekat.entity.Student;  
+import org.springframework.boot.CommandLineRunner;  
+import org.springframework.boot.SpringApplication;  
+import org.springframework.boot.autoconfigure.SpringBootApplication;  
+import org.springframework.context.annotation.Bean;  
+  
+import java.util.List;  
+  
+@SpringBootApplication  
+public class CruddemoApplication {  
+  
+    public static void main(String[] args) {  
+        SpringApplication.run(CruddemoApplication.class, args);  
+    }  
+  
+    public void updateStudent(StudentDAO studentDAO) {  
+  
+        int studentId = 2;  
+  
+  
+        Student myStudent = studentDAO.findById(studentId);  
+  
+        myStudent.setFirstName("Scooby");  
+  
+  
+        studentDAO.update(myStudent);  
+    }  
+  
+    private void deleteStudent(StudentDAO studentDAO)  
+    {  
+        int studentId = 3;  
+        studentDAO.delete(studentId);  
+    }  
+  
+    public int deleteAllStudents(StudentDAO studentDAO)  
+    {  
+        int deletedStudents = studentDAO.deleteAll();  
+  
+        return  deletedStudents;  
+    }  
+  
+    @Bean  
+    // kod koji se izvrsava posto su svi Spring Beanovi ucitani  
+    public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {  
+  
+        // ovo je lamba funkcija sto je ekvivalent arrow funkcija  
+        // u js, radi pocevsi od java 8        return runner -> {  
+//            createStudent(studentDAO);  
+              createMultipleStudents(studentDAO);  
+  
+//            readStudent(studentDAO);  
+//            queryForStudents(studentDAO);  
+//            updateStudent(studentDAO);  
+//            deleteStudent(studentDAO);  
+//              deleteAllStudents(studentDAO);  
+        };  
+    }  
+  
+    private void queryForStudents(StudentDAO studentDAO)  
+    {  
+        List<Student> theStudents = studentDAO.findAll();  
+  
+        for(Student tempStudent : theStudents)  
+        {  
+            System.out.println(tempStudent);  
+        }  
+    }  
+  
+    private void readStudent(StudentDAO studentDAO)  
+    {  
+        Student myStudent = studentDAO.findById(2);  
+  
+        System.out.println("Found student" + myStudent);  
+    }  
+  
+    private void createMultipleStudents(StudentDAO studentDAO) {  
+  
+        Student tempStudent1 = new Student("Mitar", "Miric", "mitar.miric@gmail.com");  
+        Student tempStudent2 = new Student("Rade", "Martionvic", "rade.martinovic@gmail.com");  
+        Student tempStudent3 = new Student("Petar", "Kolic", "petar.kolic@gmail.com");  
+  
+        studentDAO.save(tempStudent1);  
+        studentDAO.save(tempStudent2);  
+        studentDAO.save(tempStudent3);  
+  
+    }  
+  
+    private void createStudent(StudentDAO studentDAO) {  
+        Student tempStudent = new Student("Pavle", "Delic", "pavle@gmail.com");  
+        studentDAO.save(tempStudent);  
+    }  
+  
+}
+
+
+```
+
+
+
+```
+// StudentDAO.java
+
+package com.example.drugiProjekat.drugiprojekat.dao;
+
+import com.example.drugiProjekat.drugiprojekat.entity.Student;
+
+import java.util.List;
+
+public interface StudentDAO {
+
+    void save(Student theStudent);
+
+    Student findById(Integer id);
+
+    List<Student> findAll();
+
+
+    List<Student> findByLastName(String theLastName);
+
+
+    void update(Student theStudent);
+
+    void delete(Integer id);
+
+    int deleteAll();
+}
+
+
+```
+
+```
+// StudentDAOImpl.java
+
+package com.example.drugiProjekat.drugiprojekat.dao;
+
+import com.example.drugiProjekat.drugiprojekat.entity.Student;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+// anotacija za repozitorije
+// podrzava skeniranje komponenti
+// podrska za JDBC exceptione ugradjuje se
+@Repository
+public class StudentDAOImpl implements StudentDAO {
+    private EntityManager entityManager;
+
+    // ovde radimo injection
+    @Autowired
+    public StudentDAOImpl(EntityManager theEntityManager) {
+        entityManager = theEntityManager;
+    }
+
+    // implementacija save metode koja cuva nove polje u tabeli
+    @Override
+    @Transactional
+    public void save(Student theStudent) {
+        //cuvanje novog studenta u bazi
+        entityManager.persist(theStudent);
+    }
+    public List<Student> findAll()
+    {
+        // create query
+        // student je ime klase ne ime u tabeli iako je to cesto i ime u tabeli, vec entity name i
+        // entity fields
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM student", Student.class);
+
+
+        // return results
+        return theQuery.getResultList();
+
+    }
+    public Student findById(Integer id)
+    {
+        return entityManager.find(Student.class, id);
+    }
+
+
+    @Override
+    public List<Student> findByLastName(String theLastName)
+    {
+
+        TypedQuery<Student> theQuery = entityManager.createQuery("FROM Student WHERE lastName=:theData", Student.class);
+        theQuery.setParameter("theData", theLastName);
+
+        return theQuery.getResultList();
+    }
+
+    @Override
+    @Transactional // update radimo
+    public void update(Student theStudent)
+    {
+        entityManager.merge(theStudent);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Integer id)
+    {
+        Student theStudent = entityManager.find(Student.class, id);
+
+        entityManager.remove(theStudent);
+    }
+
+
+    @Override
+    @Transactional
+    public int deleteAll()
+    {
+        int numRowsDeleted = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+
+        return numRowsDeleted;
+    }
+}
+```
+
+
+```
+// application.properties
+
+
+spring.jpa.hibernate.ddl-auto=create  
+# automatski pravi tabele po pokretanju aplikacije  
+# opcije  
+# none - bez akcije  
+# create-only - tabele se prave  
+# drop tabele se brisu sve se brise  
+# tabele se brisu pa se onda ponovo prave  
+# create-drop isto kao create sem sto po gasenju aplikacije gase se i tabele  
+# validate = provera tabela schema  
+# update = updejtuje schemu tabela cuva stare i pravi nove  
+# ovo ne koristi na produkciji sem ovako koristi sql skripte umesto
+
+
+```

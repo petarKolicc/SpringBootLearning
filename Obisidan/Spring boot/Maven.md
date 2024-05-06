@@ -48,7 +48,7 @@ https://mvnrepository.com/repos/central
 
 
 ###package
-
+# Start 
 // pokretanje pakovanje i runovanje
 ./mvnw package && ./mvnw spring-boot:run
 // ili samo mvn
